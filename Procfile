@@ -1,1 +1,1 @@
-worker: python option_break_day_high_backtest.py
+worker: python option_break_30m_day_high_backtest.py
