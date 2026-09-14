@@ -100,8 +100,17 @@ def state(pp,op):
     if pp<0 and op<0:return "LONG_UNWINDING"
     return "FLAT/MIXED"
 
-INS="""INSERT INTO public.option_break_futures_oi_16 VALUES
-(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,NOW())
+INS="""INSERT INTO public.option_break_futures_oi_16(
+ trading_date,symbol,option_trigger_time,option_outcome,future_instrument_key,
+ baseline_time,baseline_future_price,baseline_future_oi,trigger_future_price,trigger_future_oi,
+ cumulative_price_pct,cumulative_oi_pct,pre5_price_pct,pre5_oi_pct,pre10_price_pct,pre10_oi_pct,
+ oi_state_baseline_to_trigger,oi_state_pre5,oi_state_pre10,data_status,error_message
+) VALUES(
+ %s,%s,%s,%s,%s,
+ %s,%s,%s,%s,%s,
+ %s,%s,%s,%s,%s,%s,
+ %s,%s,%s,%s,%s
+)
 ON CONFLICT(trading_date,symbol,option_trigger_time) DO UPDATE SET
  option_outcome=EXCLUDED.option_outcome,future_instrument_key=EXCLUDED.future_instrument_key,
  baseline_time=EXCLUDED.baseline_time,baseline_future_price=EXCLUDED.baseline_future_price,

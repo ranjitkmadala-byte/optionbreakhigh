@@ -29,3 +29,6 @@ python option_break_futures_oi_16.py
 Note:
 Upstox V3 historical candle responses include Open Interest as candle element [6],
 which is why this study can reconstruct historical futures OI alongside price.
+
+
+FIX: explicit 21-column INSERT; corrected placeholder/value count mismatch.
